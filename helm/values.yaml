@@ -2,8 +2,8 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-namespace: adv-devops
-releasename: adv-devops-project
+namespace: k8s-project
+releasename: k8s-project
 
 replicaCount: 1
 
