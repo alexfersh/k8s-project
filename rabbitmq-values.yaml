@@ -1,0 +1,16 @@
+service:
+  type: NodePort
+  port: 5672
+  portName: amqp
+  nodePort: ""
+  managerPort: 15672
+  managerPortName: http
+  managerNodePort: 32272
+  metricsPort: 9419
+  metricsPortName: metrics
+  metricsNodePort: ""
+metrics:
+  enabled: true
+  plugins: "rabbitmq_prometheus"
+extraPlugins: "rabbitmq_prometheus"
+

@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: {{ .Values.releasename }}-consumer
+  name: {{ .Values.releasename }}-consumer
+  namespace: {{ .Values.namespace }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: {{ .Values.releasename }}-consumer
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.releasename }}-consumer
+    spec:
+      containers:
+        - image: {{ .Values.image.repository }}/consumer:<TAG>
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          name: consumer
+          tty: true
+          command: ["python"]
+          args: ["consumer.py", "-p", "5672", "-s", "rabbitmq"]
